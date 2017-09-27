@@ -1,0 +1,17 @@
+{
+  "name": "mongoref1808",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/vanpho93/mongoref1808.git",
+  "author": "Van Pho Nguyen <vanpho02@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "mongoose": "^4.11.12"
+  },
+  "devDependencies": {
+    "mocha": "^3.5.3"
+  },
+  "scripts": {
+    "test": "nodemon --exec 'mocha'"
+  }
+}
