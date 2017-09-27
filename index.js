@@ -1,5 +1,8 @@
 const express = require('express');
 const parser = require('body-parser').urlencoded({ extended: false });
+const mongoose = require('mongoose');
+
+const User = require('./src/User');
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -8,6 +11,19 @@ app.use(express.static('public'));
 
 app.post('/post', parser, (req, res) => {
     //Co 1 post trong db
+    const { userId, title, content } = req.body;
+    User.addPostById(userId, title, content)
+    .then(() => res.send({ message: 'OK' }))
+    .catch(err => res.send({ error: err.message }));
 });
 
-app.listen(3000, () => console.log('Server started!'));
+app.post('/user', parser, async (req, res) => {
+    const user = new User(req.body);
+    await user.save();
+    res.send({ message: 'OK' });
+})
+
+mongoose.connect('mongodb://localhost/shop', { useMongoClient: true });
+mongoose.connection.once('open', () => {
+    app.listen(3000, () => console.log('Server started!'));
+});
