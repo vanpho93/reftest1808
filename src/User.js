@@ -11,19 +11,27 @@ const UserSchema = new Schema({
     }]
 });
 
-const User = mongoose.model('user', UserSchema);
+const UserModel = mongoose.model('user', UserSchema);
 
 //static addPostById
-User.addPostById = async (userId, title, content)  => {
+UserModel.addPostById = async (userId, title, content) => {
     const post = new Post({ title, content });
     await post.save();
     await User.findByIdAndUpdate(userId, { $push: { posts: post } })
 }
 
-User.prototype.addPost = async function(title, content) {
-    const post = new Post({ title, content });
-    await post.save();
-    await User.findByIdAndUpdate(this._id, { $push: { posts: post } })
+// User.prototype.addPost = async function(title, content) {
+//     const post = new Post({ title, content });
+//     await post.save();
+//     await this.update({ $push: { posts: post } })
+// }
+
+class User extends UserModel {
+    async addPost(title, content) {
+        const post = new Post({ title, content });
+        await post.save();
+        await this.update({ $push: { posts: post } })
+    }
 }
 
 module.exports = User;
