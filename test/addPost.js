@@ -17,6 +17,20 @@ describe('Create new post', () => {
         await post.save();
         await User.findByIdAndUpdate(userId, { $push: { posts: post } })
         const user2 = await User.findById(userId).populate('posts');
-        console.log(user2);
+    });
+
+    it('Create post with addPostById', async () => {
+        await User.addPostById(userId, 'JS', 'async await');
+        const user2 = await User.findById(userId).populate('posts');
+        assert(user2.posts[0].title === 'JS');
+    });
+
+    it('Create post with instance method', async () => {
+        // const user = User.findById(userId);
+        const user = new User({ _id: userId });
+        console.log(user);
+        await user.addPost('JS', 'async await');
+        const user2 = await User.findById(userId).populate('posts');
+        assert(user2.posts[0].title === 'JS');
     });
 });
