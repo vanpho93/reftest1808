@@ -16,6 +16,6 @@
     "supertest": "^3.0.0"
   },
   "scripts": {
-    "test": "nodemon --exec 'mocha --recursive -R min'"
+    "test": "nodemon --exec 'mocha --recursive'"
   }
 }
