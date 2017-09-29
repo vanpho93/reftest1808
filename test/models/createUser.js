@@ -1,5 +1,5 @@
 const assert = require('assert');
-const User = require('../src/User');
+const User = require('../../src/User');
 
 describe('Create user', () => {
     it('Can create new user without post', async () => {

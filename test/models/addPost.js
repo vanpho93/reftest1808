@@ -1,6 +1,6 @@
 const assert = require('assert');
-const User = require('../src/User');
-const Post = require('../src/Post');
+const User = require('../../src/User');
+const Post = require('../../src/Post');
 const ObjectId = require('mongoose').Schema.Types.ObjectId;
 
 describe('Create new post', () => {
