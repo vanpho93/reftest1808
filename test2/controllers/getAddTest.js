@@ -19,7 +19,7 @@ describe('GET /cong', () => {
 describe('POST /cong', () => {
     it('Can add 5 + 4', async () => {
         const res = await request(app).post('/cong')
-        .send({ a: 4, b: 5 });
+        .type('form').send({ a: 4, b: 5 });
         assert.equal(res.status, 200);
         assert.equal(res.text, '9');
     });

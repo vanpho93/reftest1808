@@ -23,14 +23,14 @@ app.post('/user', jsonParser, async (req, res) => {
     res.send({ message: 'OK' });
 });
 
-app.get('/cong/:a/:b', parser, (req, res) => {
+app.get('/cong/:a/:b', (req, res) => {
     const { a, b } = req.params;
     const kq = +a + +b + '';
     if (isNaN(kq)) return res.status(404).send('Tham so khong hop le'); 
     res.status(200).send(kq);
 });
 
-app.post('/cong', jsonParser, (req, res) => {
+app.post('/cong', parser, (req, res) => {
     const { a, b } = req.body;
     const kq = +a + +b + '';
     if (isNaN(kq)) return res.status(404).send('Tham so khong hop le'); 
