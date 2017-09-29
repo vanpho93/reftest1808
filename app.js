@@ -17,7 +17,7 @@ app.post('/post', parser, (req, res) => {
     .catch(err => res.send({ error: err.message }));
 });
 
-app.post('/user', parser, async (req, res) => {
+app.post('/user', jsonParser, async (req, res) => {
     const user = new User(req.body);
     await user.save();
     res.send({ message: 'OK' });
