@@ -21,7 +21,7 @@ app.post('/user', parser, async (req, res) => {
     const user = new User(req.body);
     await user.save();
     res.send({ message: 'OK' });
-})
+});
 
 mongoose.connect('mongodb://localhost/shop', { useMongoClient: true });
 mongoose.connection.once('open', () => {

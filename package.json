@@ -11,9 +11,10 @@
     "mongoose": "^4.11.12"
   },
   "devDependencies": {
+    "eslint-config-rallycoding": "^3.2.0",
     "mocha": "^3.5.3"
   },
   "scripts": {
-    "test": "nodemon --exec 'mocha --recursive'"
+    "test": "nodemon --exec 'mocha --recursive -R min'"
   }
 }

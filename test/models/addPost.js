@@ -28,7 +28,6 @@ describe('Create new post', () => {
     it('Create post with instance method', async () => {
         // const user = User.findById(userId);
         const user = new User({ _id: userId });
-        console.log(user);
         await user.addPost('JS', 'async await');
         const user2 = await User.findById(userId).populate('posts');
         assert(user2.posts[0].title === 'JS');
