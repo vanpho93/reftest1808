@@ -3,5 +3,9 @@
     "env": {
         "node": true,
         "mocha": true
+    },
+    "rules": {
+        "prefer-template": "off",
+        "import/no-extraneous-dependencies": "off"
     }
 }

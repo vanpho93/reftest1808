@@ -12,7 +12,8 @@
   },
   "devDependencies": {
     "eslint-config-rallycoding": "^3.2.0",
-    "mocha": "^3.5.3"
+    "mocha": "^3.5.3",
+    "supertest": "^3.0.0"
   },
   "scripts": {
     "test": "nodemon --exec 'mocha --recursive -R min'"
